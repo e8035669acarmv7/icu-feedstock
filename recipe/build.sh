@@ -43,6 +43,11 @@ make -j${CPU_COUNT} ${VERBOSE_CM}
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
   make check
 fi
+
+# https://unicode-org.atlassian.net/browse/ICU-21294
+echo mkdir -p $PREFIX/share/icu/73.2/icudt73l/{brkitr,coll,curr,lang,rbnf,region,translit,unit,zone}/
+mkdir -p $PREFIX/share/icu/73.2/icudt73l/{brkitr,coll,curr,lang,rbnf,region,translit,unit,zone}/
+
 make install
 
 rm -rf ${PREFIX}/sbin
